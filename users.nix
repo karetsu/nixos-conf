@@ -18,6 +18,32 @@
           wordnet
           pamixer
           killall
+          starship
+
+          # glitz
+          cliphist
+          hypridle
+          hyprlock
+          hyprpicker
+          hyprnotify
+          hyprshot
+          hyprsunset
+          hyprpolkitagent
+          grimblast
+          hyprkeys
+          hyprland-protocols
+          bemenu
+          eww
+          fortune
+          wmctrl
+          wl-clipboard-rs
+          swappy
+          plasma5Packages.qt5ct
+          wireplumber
+          swww
+          playerctl
+          xdg-desktop-portal-hyprland
+          remind
 
           # haskell packages
           haskellPackages.stylish-haskell
@@ -38,12 +64,21 @@
           # media
           blanket
           
+          # office
+          typst
+          typst-fmt
+          typst-live
+          typst-lsp   
+          whatsapp-for-linux
+          pom
+          gnome-pomodoro
+
           # networking
           varia
 
           # emacs everywhere
           xdotool
-          xclip          
+          xclip
         ];
         shell = pkgs.zsh;
         uid = 1000;

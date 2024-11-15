@@ -29,6 +29,9 @@
     ripgrep
     trash-cli
     shfmt
+    cmake
+    libtool
+    bc
 
     # dev
     devenv
@@ -46,8 +49,9 @@
     font-awesome
     source-code-pro
     material-icons
-    # paper-icon-theme
-    # vanilla-dmz
+    kitty
+    paper-icon-theme
+    vanilla-dmz
 
     # haskell
     ghc
@@ -66,9 +70,7 @@
     ffmpeg
     spotify
 
-
     # web office
-    whatsapp-for-linux
     languagetool
     discord-canary
     firefox
@@ -76,20 +78,27 @@
     poppler
     groff
     ghostscript
-    graphviz
-    aspell
-    aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.en-science
+    graphviz 
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
   ];
 
   programs = {
     zsh.enable = true;
+    waybar.enable = true;
+    hyprland.enable = true;
   };
 
   fonts = {
     enableGhostscriptFonts = true;
-    packages = with pkgs; [ font-awesome hasklig ];
+    packages = with pkgs; [ 
+      mononoki 
+      font-awesome 
+      hasklig 
+      fira-code 
+      fira-code-symbols 
+      agave
+      roboto
+    ];
 
     fontconfig = {
       defaultFonts = {

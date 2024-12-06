@@ -15,7 +15,7 @@ in
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -70,14 +70,13 @@ in
     BROWSER = "firefox";
     LC_CTYPE = "en_GB.UTF-8";
     PAGER = "less";
-    TERM = "kgx";
+    TERM = "kitty";  # set to kgx for gnome
   };
   home.keyboard.layout = "uk";
   home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ"; 
 
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true;
     package = pkgs.vanilla-dmz;
     name = "Vanilla-DMZ";
     size = 14;
@@ -91,6 +90,7 @@ in
     #-- EMACS -------------------------------------------------------------------
     emacs = {
       enable = true;
+      package = pkgs.emacs30-pgtk;
       startWithUserSession = "graphical";
       socketActivation.enable = true;
     };
@@ -100,59 +100,39 @@ in
       enable = true;
 
       iconTheme = {
-        name = "Paper";
+        name = "Paper, Adwaita";
         package = pkgs.paper-icon-theme;
       };
 
       settings = {
         global = {
-          font = "Rounded Mplus 1c 12";
+          font = "Noto Sans 10";
           markup = "full";
-          format =
-            "<b><span foreground='${colours.base11}'>%a</span></b>\\n<b>%s</b>\\n<span style='font-style=italic;'>%b</span>";
-          sort = "yes";
-          indicate_hidden = "yes";
+          notification_limit = 1;
+          gap_size = 3;
+          indicate_hidden = true;
           alignment = "left";
           bounce_freq = 5;
-          show_age_threshold = 60;
-          word_wrap = "no";
-          ignore_newline = "no";
-          geometry = "600x6+2060+72";
+          width = 350;
+          height = 160;
+          origin = "top-center";
+          offset = "0x20";
           transparency = 0;
           idle_threshold = 120;
           sticky_history = "yes";
           icon_position = "left";
-          max_icon_size = 24;
-          line_height = 8;
-          separator_height = 2;
+          separator_height = 0;
           padding = 24;
           horizontal_padding = 24;
           separator_color = "frame";
           startup_notification = false;
-          show_indicators = "yes";
           frame_width = 0;
-          corner_radius = 2;
-
-          shadow-exclude = [
-            "name = 'Notification'"
-            "class_g ?= 'Dunst'"
-            # disable shadows for hidden windows:
-            "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
-            #  "_GTK_FRAME_EXTENTS@:c",
-            # disables shadows on sticky windows:
-            "_NET_WM_STATE@:32a *= '_NET_WM_STATE_STICKY'"
-          ];
-        };
-
-        shortcuts = {
-          close = "ctrl+space";
-          close_all = "ctrl+shift+space";
-          history = "ctrl+grave";
-          context = "ctrl+shift+period";
+          corner_radius = 4;
+          dmenu = "bemenu -p dunst";
         };
 
         urgency_low = {
-          background = colours.base00; # bg-alt;
+          background = colours.base01; # bg-alt;
           foreground = colours.basefg;
           frame_color = colours.basebg;
           timeout = 4;
@@ -176,6 +156,9 @@ in
     };
   };
 
+  wayland.windowManager.hyprland.plugins = [
+    pkgs.hyprlandPlugins.hyprexpo
+  ];
 
   # Let Home Manager install and manage itself.
   programs = {
@@ -183,14 +166,20 @@ in
 
     direnv = {
       enable = true;
-      enableBashIntegration = true; # see note on other shells below
+      enableBashIntegration = true;
       nix-direnv.enable = true;
       enableZshIntegration = true;
     };
 
     emacs = {
       enable = true;
-      extraPackages = epkgs: [ epkgs.vterm epkgs.shfmt epkgs.djvu ];
+      package = pkgs.emacs30-pgtk;
+      extraPackages = epkgs: [
+	 epkgs.vterm
+         epkgs.shfmt
+	 epkgs.djvu
+	 epkgs.all-the-icons-nerd-fonts
+       ];
     };
 
     fzf = {

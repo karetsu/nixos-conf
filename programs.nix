@@ -35,7 +35,7 @@
 
     # dev
     devenv
-    emacs
+    emacs30-pgtk
     gcc
     gnumake
     clang
@@ -46,9 +46,6 @@
     just
 
     # glitz
-    font-awesome
-    source-code-pro
-    material-icons
     kitty
     paper-icon-theme
     vanilla-dmz
@@ -72,7 +69,7 @@
 
     # web office
     languagetool
-    discord-canary
+    webcord-vencord
     firefox
     texlive.combined.scheme-medium
     poppler
@@ -82,30 +79,43 @@
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
   ];
 
+  xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+          xdg-desktop-portal-hyprland
+      ];
+  };
+
   programs = {
     zsh.enable = true;
+    regreet.enable = false;
     waybar.enable = true;
-    hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
 
   fonts = {
     enableGhostscriptFonts = true;
     packages = with pkgs; [ 
-      mononoki 
       font-awesome 
-      hasklig 
-      fira-code 
-      fira-code-symbols 
-      agave
-      roboto
+      source-sans-pro
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      noto-fonts-emoji
+      noto-fonts-extra
+      iosevka
+      hasklig
     ];
 
     fontconfig = {
       defaultFonts = {
         monospace =
-          [ "hasklig" "Iosevka Nerd Font" "Font Awesome" "Material Icons" ];
-        sansSerif = [ "Mplus" ];
-        serif = [ "Mplus" ];
+          [ "JetBrains Mono" "Iosevka" "Hasklig" ];
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Sans" ];
       };
     };
   };

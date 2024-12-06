@@ -7,7 +7,7 @@
     users = {
       g = {
         isNormalUser = true;
-        description = "Gareth";
+        description = "G";
         createHome = true;
         home = "/home/g";
         extraGroups = [ "wheel" "audio" "transmission" "plex" "dialout" ];
@@ -19,9 +19,12 @@
           pamixer
           killall
           starship
+          eza
+          socat
 
           # glitz
           cliphist
+	  pyprland
           hypridle
           hyprlock
           hyprpicker
@@ -30,20 +33,23 @@
           hyprsunset
           hyprpolkitagent
           grimblast
-          hyprkeys
           hyprland-protocols
+          hyprpolkitagent
           bemenu
           eww
           fortune
           wmctrl
           wl-clipboard-rs
+          wlogout
           swappy
-          plasma5Packages.qt5ct
           wireplumber
           swww
           playerctl
           xdg-desktop-portal-hyprland
           remind
+          nwg-drawer
+          nwg-look
+          nwg-wrapper
 
           # haskell packages
           haskellPackages.stylish-haskell
@@ -75,10 +81,6 @@
 
           # networking
           varia
-
-          # emacs everywhere
-          xdotool
-          xclip
         ];
         shell = pkgs.zsh;
         uid = 1000;

@@ -71,6 +71,7 @@
     languagetool
     webcord-vencord
     firefox
+    thunderbird
     texlive.combined.scheme-medium
     poppler
     groff
@@ -88,7 +89,6 @@
 
   programs = {
     zsh.enable = true;
-    regreet.enable = false;
     waybar.enable = true;
     hyprland = {
       enable = true;
@@ -108,6 +108,7 @@
       noto-fonts-extra
       iosevka
       hasklig
+      victor-mono
     ];
 
     fontconfig = {

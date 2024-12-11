@@ -14,8 +14,6 @@
         packages = with pkgs; [
           # generic
           libvterm
-          xorg.xwininfo # for emacs everywhere
-          wordnet
           pamixer
           killall
           starship
@@ -24,7 +22,7 @@
 
           # glitz
           cliphist
-	  pyprland
+          pyprland
           hypridle
           hyprlock
           hyprpicker
@@ -37,7 +35,6 @@
           hyprpolkitagent
           bemenu
           eww
-          fortune
           wmctrl
           wl-clipboard-rs
           wlogout
@@ -46,7 +43,6 @@
           swww
           playerctl
           xdg-desktop-portal-hyprland
-          remind
           nwg-drawer
           nwg-look
           nwg-wrapper

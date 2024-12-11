@@ -2,11 +2,8 @@
 { config, lib, pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
-
   # List services that you want to enable:
   services = {
-    # udev.packages = [ pkgs.platformio ];
-
     xserver = {
       enable = true;
       xkb.layout = "gb";

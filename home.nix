@@ -176,6 +176,7 @@ in
         epkgs.shfmt
         epkgs.djvu
         epkgs.all-the-icons-nerd-fonts
+        epkgs.just-mode
       ];
     };
 

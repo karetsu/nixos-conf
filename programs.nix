@@ -68,6 +68,7 @@
     spotify
 
     # web office
+    wordnet
     languagetool
     webcord-vencord
     firefox
